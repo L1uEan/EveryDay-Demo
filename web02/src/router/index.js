@@ -8,6 +8,10 @@ import Me from '../view/User/Me';
 import YueKe from '../view/YueKe';
 import Index from '../view/TeacherXq/Index'
 
+// 搜索 
+import Search from "../view/Search.vue"
+import Details from "../view/Details.vue"
+
 
   
 
@@ -93,7 +97,18 @@ let r = new Router({
       name:'TeacherMsg',
       component:()=> import ('../view/TeacherXq/TeacherMsg')
     },
-
+    // 搜索
+    {
+      path:"search",
+      name:"Search",
+      component:Search
+    },
+    // 分类
+    {
+      path:"details",
+      name:"Details",
+      component:Details
+    }
     
   ]
 })

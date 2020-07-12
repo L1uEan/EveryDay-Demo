@@ -97,20 +97,13 @@
       ],
     "third":[
         {
-          "img":"https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019lp2BTH501V1571360737.jpeg",
-          "name":"廖天金",
-          "intro":"每时每课初中数学一初一拓展-分式（一）",
-          "total":"共1课时",
-          "apply":"15人已报名",
-          "offer":"免费"
-        },
-        {
           "img":"https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
           "name":"白静",
           "intro":"每时每课-初二物理-摩擦力",
           "total":"共1课时",
           "apply":"29人已报名",
-          "offer":"免费"
+          "offer":"免费",
+          "time":"⏱ 3月16日 18:30 ~ 3月22日 15:00 "
         },
         {
           "img":"https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
@@ -118,15 +111,17 @@
           "intro":"每时每课-初二物理-牛顿第一定律&二力平衡知识点",
           "total":"共1课时",
           "apply":"26人已报名",
-          "offer":"免费"
+          "offer":"免费",
+          "time":"⏱ 3月16日 18:30 ~ 3月22日 15:00 "
         },
         {
           "img":"https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
           "name":"璐璐",
           "intro":"每时每课-初一英语-where引导的特殊疑问句和on，in， under介词用法知识点",
-          "total":"共1课时",
+          "total":" 共1课时",
           "apply":"26人已报名",
-          "offer":"免费"
+          "offer":"免费",
+          "time":"⏱ 3月16日 18:30 ~ 3月22日 15:00 "
         },
         {
           "img":"https://baijiayun-wangxiao.oss-cn-beijing.aliyuncs.com/uploads/avatar.jpg",
@@ -134,7 +129,17 @@
           "intro":"每时每课-初二英语-频率副词知识点",
           "total":"共1课时",
           "apply":"15人已报名",
-          "offer":"免费"
+          "offer":"免费",
+          "time":"⏱ 3月16日 18:30 ~ 3月22日 15:00 "
+        },
+        {
+          "img":"https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019lp2BTH501V1571360737.jpeg",
+          "name":"廖天金",
+          "intro":"每时每课初中数学一初一拓展-分式（一）",
+          "total":"共1课时",
+          "apply":"15人已报名",
+          "offer":"免费",
+          "time":"⏱ 3月16日 18:30 ~ 3月22日 15:00 "
         }
       ],
     "fourth":[
