@@ -22,6 +22,7 @@
         <div class="empty-container">
           <van-empty
             class="empty"
+            image="https://wap.365msmk.com/img/empty@2x.a2fa524d.png"
             description="暂无模考安排，敬请期待"
           />
         </div>
@@ -151,6 +152,9 @@ footer{
     justify-content: space-between;
     margin-bottom: 10vw;
     font-size: 3.6vw;
+    span:nth-child(1){
+      color:red
+    }
   }
   .empty-container {
     .empty {
