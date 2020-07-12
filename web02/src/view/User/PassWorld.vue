@@ -61,7 +61,7 @@ methods:{
                     }
                 }).then((msg)=>{
                     console.log(msg)
-                    this.$router.push('/home/me')
+                    this.$router.push('/home/person')
                 })
         }
     }
