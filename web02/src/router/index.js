@@ -7,6 +7,7 @@ import LianXi from '../view/LianXi';
 import Me from '../view/User/Me';
 import YueKe from '../view/YueKe';
 import Index from '../view/TeacherXq/Index'
+// import Concern from '../view/User/Concern.vue'
 
 // 搜索 
 import Search from "../view/Search.vue"
@@ -99,15 +100,27 @@ let r = new Router({
     },
     // 搜索
     {
-      path:"search",
+      path:"/search",
       name:"Search",
       component:Search
     },
     // 分类
     {
-      path:"details",
+      path:"/details",
       name:"Details",
       component:Details
+    },
+    // 我的关注
+    {
+      path:"/concern",
+      name:"Concern",
+      component:()=>import ("../view/User/Concern.vue")
+    },
+    //我的收藏 
+    {
+      path:"/collect",
+      name:"Collect",
+      component:()=>import ("../view/User/Collect.vue")
     }
     
   ]
