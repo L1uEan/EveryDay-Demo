@@ -51,7 +51,7 @@ methods:{
         var UserJsonParse=JSON.parse(UserMessage)
         if(this.ps1==this.ps2){
             // alert(1)
-              this.axios({
+              this.http({
                     url:'/api/app/password',
                     method:'post',
                     data:{

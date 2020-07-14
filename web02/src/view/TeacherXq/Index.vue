@@ -40,9 +40,7 @@
   <!-- 精品课程 -->
   <div class="pan-good">
     <div class="pan-good-title">精品课程</div>
-    <div v-for="(item, index) in goodList" 
-         :key="index"
-         class="pan-good-content">
+    <div v-for="(item, index) in goodList"   :key="index" class="pan-good-content" @click="jingpin(item.teachers_list[0].course_basis_id)">
       <div class="pan-good-content-wrapper">
         <div>{{item.title}}</div>
         <div>共{{item.sales_num}}课时</div>
@@ -99,6 +97,8 @@
 
 <script>
 
+// 引入邮箱的界面
+
 export default {
   name:"Index",
   data() {
@@ -153,6 +153,11 @@ export default {
         // alert(id)
         this.$router.push({path:"/teacher",query:{id:id}})
     },
+    // 点击精品课程进入详情页面
+    jingpin(e){
+      // alert(e)
+      this.$router.push({path:'/details',query:{id:e}})
+    }
  
 
   },

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // 五个导航首位
 import Home from '../view/Home'
-import KeCheng from '../view/KeCheng';
+import KeCheng from '../view/KeChengXq/KeCheng';
 import LianXi from '../view/LianXi';
 import Me from '../view/User/Me';
 import YueKe from '../view/YueKe';
@@ -11,7 +11,7 @@ import Index from '../view/TeacherXq/Index'
 
 // 搜索 
 import Search from "../view/Search.vue"
-import Details from "../view/Details.vue"
+import Details from "../view/KeChengXq/Details.vue"
 
 
   

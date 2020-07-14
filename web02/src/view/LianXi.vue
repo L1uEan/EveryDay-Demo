@@ -77,7 +77,7 @@ mounted() {
 </script>
 <style lang="scss">
 /* @import url(); 引入css类 */
-p{
+#LianXi p{
   text-align: center;
   font-size: 0.2rem;
   line-height: 0.5rem;

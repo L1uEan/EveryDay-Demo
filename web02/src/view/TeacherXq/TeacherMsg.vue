@@ -23,7 +23,7 @@
                         <span>{{TeacherHeader.teach_age}}年教龄</span>
                     </p>
                 </div>
-                <button @click="guanzhu()">{{guanzhuText}}</button>
+                <button @click="follow" :class="guanzhuNum==1?'guanzhuClor':'yiguanzhuColor'">{{guanzhuNum | followIndex}}</button>
             </div>
       </div>
       <!-- 3.老师具体介绍 -->
@@ -104,9 +104,10 @@ return {
   TeacherHeader:[],
   Curriculum:[],
   TeacherAppraise:[],
-  guanzhuText:'关注',
-  guanzhuBool:false,
-  sex:''
+  guanzhuText:'',
+  guanzhuNum:1,
+  sex:'',
+  
 }
 },
 filters:{
@@ -128,7 +129,17 @@ filters:{
             return `$:${(val/100).toFixed(2)}`;
           }
           return val;
-      }
+      },
+    //   过滤是否关注
+    followIndex(val){
+        if(val==1){
+            return '关注'
+        }else if(val==2){
+            return '已关注'
+        }
+        return val
+    }
+
 },
 //生命周期 - 创建完成（访问当前this实例）
 created() {
@@ -167,6 +178,7 @@ mounted() {
             // console.log(msg.data.data.list)
             this.TeacherAppraise=msg.data.data.list;
         })
+        
 },
 methods:{
     // 请求数据老师介绍
@@ -180,7 +192,18 @@ methods:{
        let { data }= await this.http.get("https://www.365msmk.com/api/app/teacher/"+this.id);
        this.TeacherHeader=data.data.teacher;
        this.sex=data.data.teacher.sex;
-    //    console.log(data.data)
+       this.guanzhuNum=data.data.flag;
+       console.log(data.data)
+    },
+   async follow() {
+           let {data:res} = await this.http.get("https://www.365msmk.com/api/app/teacher/collect/"+this.id)
+                // console.log(res.data)
+                this.guanzhuNum=res.data.flag
+         if(this.guanzhuNum==1){
+                this.$toast.success('已取消');
+            }else{
+            this.$toast.success('已关注');
+          }
     },
     // 请求主讲课程部分
     async techerClass(){
@@ -191,16 +214,6 @@ methods:{
     onClickLeft(){
        window.history.go(-1)
     },
-    // 关注
-    guanzhu(){
-        // 点击关注切换状态 如果为true则已关注 反之亦然
-        this.guanzhuBool=!this.guanzhuBool;
-        if(this.guanzhuBool){
-            this.guanzhuText="已关注"
-        }else{
-            this.guanzhuText='关注'
-        }
-    }
 }
 
 }
@@ -305,11 +318,16 @@ methods:{
                     font-size: 3.46667vw;
                     font-family: PingFangSC-Regular;
                     font-weight: 400;
-                    color: #4169ff;
-                    color: #eb6100;
                     border: 0;
             }
     }
+}
+
+.guanzhuClor{
+    color: #b7b7b7 !important;
+}
+.yiguanzhuColor{
+    color: orange !important;
 }
 // 老师具体介绍部分
 .teacher-content{
@@ -438,11 +456,10 @@ methods:{
     position: fixed;
     bottom: 0%;
     width: 100%;
-    height: 0.5rem;
-    background: #ea7a2f;
+    height: 0.4rem;
+    background: #eb6100;
     text-align: center;
-    height: 0.5rem;
-    line-height: 0.5rem;
+    line-height: 0.4rem;
     color: white;
     font-size: 0.16rem;
     font-weight: 500;

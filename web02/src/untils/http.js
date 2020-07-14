@@ -2,7 +2,7 @@ import axios from 'axios';
 // 引入id标识
 import { Guid } from './guid';
 
-axios.defaults.baseURL = 'http://120.53.31.103:84';
+axios.defaults.baseURL = 'https://www.365msmk.com';
 
 // 获取设备id
 let DeviceID = localStorage.DeviceID;
@@ -21,12 +21,15 @@ axios.interceptors.request.use(config => {
        DeviceID:ID,
        DeviceType:"H5"
    }
-//    let token = localStorage.getItem("L1uEanLogin")
-//    var a= JSON.parse(token);
-
-//    if(a.usertoken){
-//     config.headers.Authorization = `Bearer ${a.usertoken}`
-//    }
+   let token = localStorage.getItem("token")
+//    console.log(token)
+   if(token){
+        if(token){
+         config.headers.Authorization = `Bearer ${token}`
+        }
+   }
+//    console.log(config.headers.Authorization)
+  
 
    return config;
 })

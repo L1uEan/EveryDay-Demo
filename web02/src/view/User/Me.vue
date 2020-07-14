@@ -43,7 +43,7 @@ methods:{
     },
     // 登录
     SignIn(){
-        this.axios({
+        this.http({
             url:"/api/app/login",
             method:'post',
             data:{

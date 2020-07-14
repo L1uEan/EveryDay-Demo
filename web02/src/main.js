@@ -15,11 +15,10 @@ Vue.use(Vant);
 import './js/rem'
 
 // 引入全局axios
-import axios from './untils/http';
-Vue.prototype.axios=axios;
 // axios依赖
-import http from 'axios';
-Vue.prototype.http=http;
+import axios from './untils/http';
+Vue.prototype.http=axios;
+
 
 
 // 引入默认清除样式

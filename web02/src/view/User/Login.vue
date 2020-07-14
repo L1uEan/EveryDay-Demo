@@ -49,7 +49,7 @@ methods:{
     // 防止定时器被无限次点击
       if(this.PlaceCodeClice){
         // 点击按钮发送一个axios请求
-        this.axios({
+        this.http({
            url:"/api/app/smsCode",
            method:"post",
            params:{
@@ -85,7 +85,7 @@ methods:{
   // 点击登录 根据短信开始
   denglu(){
     //  alert(1)
-      this.axios({
+      this.http({
          url:"/api/app/login",
          method:"post",
          params:{
@@ -98,7 +98,6 @@ methods:{
          console.log(res)
          var user={
            userid:res.data.data.id,
-           usertoken:res.data.data.remember_token,
            useryanzheng:this.msg,
            usertel:this.tel
          }

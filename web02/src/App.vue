@@ -2,14 +2,17 @@
   <div id="app">
       <router-view/>
         <!-- email邮箱拖拽部分 -->
-    <div class="email" id='emailBox' @touchstart="down()" @touchmove="move()" @touchend="end()">
+    <!-- <div class="email" id='emailBox' @touchstart="down()" @touchmove="move()" @touchend="end()">
         <img src="./assets/img/email.png" alt="">
-    </div>
+    </div> -->
 
   </div>
 </template>
 
 <script>
+
+import './untils/meiqia';
+
 export default {
 name:"",
 data() {
@@ -85,6 +88,10 @@ mounted() {
 <style lang='scss'>
 /* @import url(); 引入css类 */
 /* email */
+p{
+  text-align: none;
+}
+
 .email{
   width: 0.6rem;
   height: 0.6rem;
