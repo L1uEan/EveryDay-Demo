@@ -198,13 +198,13 @@ export default {
   //生命周期 - 挂载完成（访问DOM元素）
   mounted() {
     // 轮播接口数据渲染
-    this.http.get('https://www.365msmk.com//api/app/banner').then((msg)=>{
-      // console.log(msg)
+    this.http.get('/api/app/banner').then((msg)=>{
+      console.log(msg)
       // window.console.log(msg)
       this.swiperList=msg.data.data;
     })
     // 首页列表
-    this.http.get('https://www.365msmk.com/api/app/recommend/appIndex').then((msg)=>{
+    this.http.get('/api/app/recommend/appIndex').then((msg)=>{
 
           // console.log(msg)
           msg.data.data.forEach((item,index)=>{

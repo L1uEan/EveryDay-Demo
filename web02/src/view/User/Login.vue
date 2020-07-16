@@ -7,12 +7,12 @@
           </div>
           <!-- 电话输入框 -->
           <div class="login-num">
-              <input type="text" placeholder="请输入你的手机号码" maxlength="11" v-model="tel">
+              <input type="text" placeholder="请输入你的手机号码" maxlength="11" v-model="tel" >
                <span @click="place" :class="PlaceCodeClice?'placeYanzheng':'placeYanzheng2'">{{PlaceText}}</span>
           </div>
           <!-- 验证码输入框 -->
           <div class="login-password">
-              <input type="text" v-model="msg"  placeholder="请输入短信验证码" >
+              <input type="text" v-model="msg"  placeholder="请输入短信验证码"  >
           </div>
           <!-- 登录选项内容 -->
           <div class="login-set">

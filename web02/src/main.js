@@ -11,13 +11,20 @@ import Vant from 'vant';
 import 'vant/lib/index.css'
 Vue.use(Vant);
 
+// mint-ui
+import { InfiniteScroll } from 'mint-ui';
+Vue.use(InfiniteScroll);
 // 引入 rem
 import './js/rem'
 
 // 引入全局axios
 // axios依赖
-import axios from './untils/http';
-Vue.prototype.http=axios;
+import http from './untils/http';
+Vue.prototype.http=http;
+
+import axios from 'axios';
+Vue.prototype.axios=axios;
+
 
 
 

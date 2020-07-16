@@ -10,7 +10,7 @@ import Index from '../view/TeacherXq/Index'
 // import Concern from '../view/User/Concern.vue'
 
 // 搜索 
-import Search from "../view/Search.vue"
+import Search from "../view/KeChengXq/Search.vue"
 import Details from "../view/KeChengXq/Details.vue"
 
 
@@ -42,8 +42,8 @@ let r = new Router({
         },
         {
           path:'kecheng',
-          name:'KeCheng',
-          component:KeCheng
+          name:'TeseKe',
+          component:()=> import ('../view/KeChengXq/TeseKe')
         },
         {
           path:'person',
@@ -92,19 +92,19 @@ let r = new Router({
       name:'Me',
       component:Me
     },
-    // 讲师详情部分
+    // 讲师详情部分(正式接口)
     {
       path:'/teacher',
       name:'TeacherMsg',
       component:()=> import ('../view/TeacherXq/TeacherMsg')
     },
-    // 搜索
-    {
-      path:"/search",
-      name:"Search",
-      component:Search
-    },
-    // 分类
+      // 课程搜索
+      {
+        path:"/search",
+        name:"Search",
+        component:Search
+      },
+    // 课程详情 分类筛选
     {
       path:"/details",
       name:"Details",

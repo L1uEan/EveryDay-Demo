@@ -6,12 +6,12 @@
               <img src="https://msmk2019.oss-cn-shanghai.aliyuncs.com/uploads/image/2019pILfAg7Avr1567732916.png" alt="">
           </div>
           <!-- 电话输入框 -->
-          <div class="login-num">
-              <input type="text" v-model="tel" placeholder="请输入你的手机号码" maxlength="11">
+          <div class="login-num" @click="LoginActive=1" :style="{borderBottom:LoginActive==1?'1px solid #ed1600':''}" >
+              <input type="text" v-model="tel" placeholder="请输入你的手机号码" maxlength="11" @blur="blurFn">
           </div>
           <!-- 密码输入框 -->
-          <div class="login-password">
-              <input type="password" v-model="password" placeholder="请输入你的密码" >
+          <div class="login-password" @click="LoginActive=2" :style="{borderBottom:LoginActive==2?'1px solid #ed1600':''}" >
+              <input type="password" v-model="password" placeholder="请输入你的密码" @blur="blurFn">
           </div>
           <!-- 登录选项内容 -->
           <div class="login-set">
@@ -34,7 +34,8 @@ name:"Me",
 data() {
 return {
     tel:'17630582941',
-    password:'123456'
+    password:'123123',
+    LoginActive:0
 }
 },
 methods:{
@@ -60,7 +61,11 @@ methods:{
                 alert(res.data.msg)
             }           
         })
-    }
+    },
+     // 失去焦点时 将LoginActive的值设为-1
+        blurFn(){
+            this.LoginActive=-1;
+        }
 },
 //生命周期 - 创建完成（访问当前this实例）
 created() {

@@ -15,7 +15,7 @@
                 <img :src="TeacherHeader.avatar" alt="">
                 <div>
                     <p>
-                        <span>{{TeacherHeader.teacher_name}}</span>
+                        <span>{{TeacherHeader.real_name}}</span>
                         <font>{{TeacherHeader.level_name}}</font>
                     </p>
                     <p>
@@ -23,7 +23,7 @@
                         <span>{{TeacherHeader.teach_age}}年教龄</span>
                     </p>
                 </div>
-                <button @click="follow" :class="guanzhuNum==1?'guanzhuClor':'yiguanzhuColor'">{{guanzhuNum | followIndex}}</button>
+                <button @click="follow" :class="guanzhuNum==1?'yiguanzhuColor':'guanzhuClor'">{{guanzhuNum | followIndex}}</button>
             </div>
       </div>
       <!-- 3.老师具体介绍 -->
@@ -105,7 +105,7 @@ return {
   Curriculum:[],
   TeacherAppraise:[],
   guanzhuText:'',
-  guanzhuNum:1,
+  guanzhuNum:-1,
   sex:'',
   
 }
@@ -133,9 +133,11 @@ filters:{
     //   过滤是否关注
     followIndex(val){
         if(val==1){
-            return '关注'
-        }else if(val==2){
             return '已关注'
+        }else if(val==2){
+            return '关注'
+        }else{
+            return '请登录'
         }
         return val
     }
@@ -153,7 +155,7 @@ mounted() {
 
         // 点击课程 进行数据的请求
         this.http({
-            url:'https://www.365msmk.com/api/app/teacher/mainCourse',
+            url:'/api/app/teacher/mainCourse',
             method:"post",
             data:{
                 limit:10,
@@ -167,7 +169,7 @@ mounted() {
 
         // 用户评价的数据请求
         this.http({
-            url:'https://www.365msmk.com/api/app/courseComment',
+            url:'/api/app/courseComment',
             method:'post',
             data:{
                 id:this.id,    
@@ -183,32 +185,39 @@ mounted() {
 methods:{
     // 请求数据老师介绍
     async  message(){
-       let { data }= await this.http.get("https://www.365msmk.com/api/app/teacher/info/"+this.id);
+       let { data }= await this.http.get("/api/app/teacher/info/"+this.id);
        this.TeacherList=data.data;
-    //    console.log(data.data)
+       console.log(data.data)
     },
     // 请求数据老师头部图片
     async teacherHead(){
-       let { data }= await this.http.get("https://www.365msmk.com/api/app/teacher/"+this.id);
+       let { data }= await this.http.get("/api/app/teacher/"+this.id);
        this.TeacherHeader=data.data.teacher;
-       this.sex=data.data.teacher.sex;
-       this.guanzhuNum=data.data.flag;
-       console.log(data.data)
+    //    this.sex=data.data.teacher.sex;
+        // 如果flag=1或者2时才进行复制
+        if(data.data.flag!=0){
+           this.guanzhuNum=data.data.flag;
+        }
+    //    console.log(data.data)
     },
    async follow() {
-           let {data:res} = await this.http.get("https://www.365msmk.com/api/app/teacher/collect/"+this.id)
-                // console.log(res.data)
-                this.guanzhuNum=res.data.flag
+           let {data:res} = await this.http.get("/api/app/teacher/collect/"+this.id)
+                console.log(res)
+         if(res.code==200){
+                this.guanzhuNum=res.data.flag;  
+         }else{
+             alert(res.msg)
+         }
          if(this.guanzhuNum==1){
-                this.$toast.success('已取消');
-            }else{
-            this.$toast.success('已关注');
+                this.$toast.success('已关注');
+            }else if(this.guanzhuNum==0){
+                   this.$toast.success('已取消');
           }
     },
     // 请求主讲课程部分
     async techerClass(){
        let{ data }= await this.http.get('/api/app/teacher/mainCourse'+this.id);
-    //    console.log(data)
+       console.log(data)
     },
     // 点击左箭头进心页面返回
     onClickLeft(){
@@ -474,6 +483,7 @@ methods:{
 }
 .Appraise-img{
     height: 2rem;
+    text-align: center;
 }
 .Appraise-img>img{   
     width: 40vw;
@@ -482,7 +492,7 @@ methods:{
     margin:  0 auto;
 }
 .Appraise-img>p{
-     font-size: .4rem;
+    font-size: .4rem;
     font-size: 4vw;
     color: #8c8c8c;
 }

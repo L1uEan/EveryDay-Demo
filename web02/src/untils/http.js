@@ -2,7 +2,7 @@ import axios from 'axios';
 // 引入id标识
 import { Guid } from './guid';
 
-axios.defaults.baseURL = 'https://www.365msmk.com';
+axios.defaults.baseURL = 'http://120.53.31.103:84';
 
 // 获取设备id
 let DeviceID = localStorage.DeviceID;
